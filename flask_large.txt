@@ -24,4 +24,4 @@ flask large application
     -   manage.py is a file to launch the application
     -   app/main/forms.py is a form for the main folders
     -   app/main/__init__.py is a blueprint register. The main application of flask
-    -   app__init__.py is a file that init all application. Include all flask extension in this file
+    -   app__init__.py is a file that init all application. Include all flask extension and blueprint register in this file
