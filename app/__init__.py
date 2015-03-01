@@ -4,7 +4,11 @@ from config import config
 #use bootstrap extension
 from flask.ext.bootstrap import Bootstrap
 
+#use SQLalchemy extension
+from flask.ext.sqlalchemy import SQLAlchemy
+
 bootstrap = Bootstrap()
+db = SQLAlchemy()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -13,6 +17,9 @@ def create_app(config_name):
 
     #init bootstrap
     bootstrap.init_app(app)
+
+    #init SQLAlchemy
+    db.init_app(app)
 
     # attach routes and custom error pages here
     from main import main as main_blueprint
