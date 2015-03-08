@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky - Post Form{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Hello, {% if current_user.is_authenticated() %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
+</div>
+<div>
+    {{ wtf.quick_form(form) }}
+</div>
+<ul class="posts">
+    {% for post in posts %}
+        <li class="post">
+            <div class="post-content">
+                <div class="post-body">{{ post.body }}</div>
+            </div>
+            <div class="post-footer">
+                <a href="{{url_for('.post', id=post.id)}}">
+                    <span class="label label-default">Permalink</span>
+                </a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
