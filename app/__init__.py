@@ -13,7 +13,7 @@ db = SQLAlchemy()
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'login'
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -25,10 +25,6 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
 
-    #import auth blueprint
-    from .auth import auth as auth_blueprint
-    app.register_blueprint(auth_blueprint)
-
     #import main blueprint
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
@@ -36,9 +32,5 @@ def create_app(config_name):
     #import post blueprint
     from .post import post as post_blueprint
     app.register_blueprint(post_blueprint)
-
-    #import freesiwtch blueprint
-    from .freeswitch import auth as freeswitch_blueprint
-    app.register_blueprint(freeswitch_blueprint)
 
     return app
